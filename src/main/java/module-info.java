@@ -9,6 +9,7 @@ module com.dbms.alibabaphase3 {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires java.sql;
 
     opens com.dbms.alibabaphase3 to javafx.fxml;
     exports com.dbms.alibabaphase3;
