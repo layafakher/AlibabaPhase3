@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.MainMenuController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="0.0" prefWidth="7.000000953674316" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="572.2" minWidth="10.0" prefWidth="572.2" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.0" minWidth="8.600000000000023" prefWidth="8.600000000000023" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="128.4" minHeight="0.0" prefHeight="75.6" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="316.2000007152557" minHeight="10.0" prefHeight="207.60000000000002" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="117.19999999999999" minHeight="10.0" prefHeight="117.19999999999999" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="92.4" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="123.4" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.4000152587891" minHeight="10.0" prefHeight="98.00000000000003" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#onForeignFlightButtonClick" text="اطلاعات بیشتر" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="18.0" />
+               </font></Button>
+            <Label text="پرواز خارجی" textAlignment="RIGHT" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="453.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#onForeignFlightButtonClick" text="اطلاعات بیشتر" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="467.0" layoutY="120.0" text="پرواز داخلی" textAlignment="RIGHT" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="340.0" layoutY="208.0" mnemonicParsing="false" onMouseClicked="#onForeignFlightButtonClick" text="اطلاعات بیشتر" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onForeignFlightButtonClick" text="اطلاعات بیشتر" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="18.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onMouseClicked="#onForeignFlightButtonClick" text="اطلاعات بیشتر" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="18.0" />
+               </font>
+            </Button>
+            <Label text="اتوبوس" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="20.0" />
+               </font>
+            </Label>
+            <Label text="تور" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="20.0" />
+               </font>
+            </Label>
+            <Label text="هتل" textAlignment="RIGHT" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <GridPane GridPane.columnIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="265.2" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.00001525878906" minWidth="10.0" prefWidth="308.3999999999999" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <GridPane GridPane.columnIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Alibaba">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="34.0" text="علی بابا" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <font>
+                        <Font name="B Nazanin" size="30.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+            <GridPane>
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="59.0" minWidth="10.0" prefWidth="10.399999999999999" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.99999809265137" minWidth="10.0" prefWidth="96.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="109.20000000000002" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="42.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" text="حساب کاربری" GridPane.columnIndex="1" />
+                  <Label fx:id="usernameLbl" GridPane.columnIndex="2" GridPane.halignment="LEFT">
+                     <font>
+                        <Font name="B Nazanin" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+      <Button mnemonicParsing="false" onMouseClicked="#onExitSystemButtonClick" text="خروج از سیستم" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>
