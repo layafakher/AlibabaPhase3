@@ -29,6 +29,9 @@ public class UserDAO implements Repository<User, Long> {
             statements.put(FIND_ALL, connection.prepareStatement(
                     "select * from [Alibaba].[dbo].[User]"
             ));
+            statements.put(FIND_BY_USER_PASS, connection.prepareStatement(
+                    "select * from [Alibaba].[dbo].[User] where [Name] = ? and [Password] = ?"
+            ));
             statements.put(FIND_BY_ID, connection.prepareStatement(
                     "select * from [Alibaba].[dbo].[User] where UserID = ?"
             ));
@@ -47,6 +50,21 @@ public class UserDAO implements Repository<User, Long> {
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
+    }
+
+    public User findIdByUserPass(String username, String password) {
+        PreparedStatement statement = statements.get(FIND_BY_USER_PASS);
+        try {
+            statement.setNString(1, username);
+            statement.setNString(2, password);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                return findById(result.getLong(1));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
     @Override

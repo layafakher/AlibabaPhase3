@@ -50,6 +50,10 @@ public final class RepositoryFacade {
         return INSTANCE;
     }
 
+    public <ID extends Serializable, T extends BaseEntity<ID>> Repository<?, ? extends Serializable> getDao(Class<T> type){
+        return daos.get(type);
+    }
+
     public static Connection getConnection(){
         try {
             return DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);

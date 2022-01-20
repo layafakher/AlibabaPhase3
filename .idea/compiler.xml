@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AlibabaPhase3" target="17" />
+      <module name="AlibabaPhase3" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
