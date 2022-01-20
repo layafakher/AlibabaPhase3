@@ -2,7 +2,10 @@ package Repository.DAO;
 
 import Model.*;
 import Repository.Repository;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
+import java.io.FileReader;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,9 +15,9 @@ import java.util.*;
 public final class RepositoryFacade {
     private static RepositoryFacade INSTANCE = null;
 
-    private static final String DB_URL = "jdbc:sqlserver://localhost:1433;database=Alibaba";
-    private static final String USER_NAME = "test1";
-    private static final String PASSWORD = "123456";
+    private static String DB_URL;
+    private static String USER_NAME;
+    private static String PASSWORD;
 
     private Map<Class<?>, Repository<?, ? extends Serializable>> daos = new HashMap<>();
 
@@ -42,8 +45,13 @@ public final class RepositoryFacade {
     public synchronized static RepositoryFacade getInstance() {
         if (INSTANCE == null) {
             try {
+                JSONParser parser = new JSONParser();
+                JSONObject configuration = (JSONObject) parser.parse(new FileReader("src/main/resources/com/dbms/alibabaphase3/configuration.json"));
+                DB_URL = (String) configuration.get("DB_URL");
+                USER_NAME = (String) configuration.get("USER_NAME");
+                PASSWORD = (String) configuration.get("PASSWORD");
                 INSTANCE = new RepositoryFacade(DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD));
-            } catch (SQLException throwables) {
+            } catch (Exception throwables) {
                 throwables.printStackTrace();
             }
         }
