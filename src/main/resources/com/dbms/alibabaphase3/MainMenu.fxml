@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.MainMenuController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.MainMenuController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="0.0" prefWidth="7.000000953674316" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="572.2" minWidth="10.0" prefWidth="572.2" />
@@ -39,7 +39,7 @@
                   <Font name="B Nazanin" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="453.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#onForeignFlightButtonClick" text="اطلاعات بیشتر" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="in" layoutX="453.0" layoutY="176.0" mnemonicParsing="false" onMouseClicked="#onInlandFlightButtonClick" text="اطلاعات بیشتر" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="B Nazanin" size="18.0" />
                </font>

@@ -21,8 +21,24 @@ public class MainMenuController implements Initializable {
     }
 
     public void onForeignFlightButtonClick(MouseEvent mouseEvent) {
-
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ForeignFlight.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            HelloApplication.primaryStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    public void onInlandFlightButtonClick(MouseEvent mouseEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("InlandFlight.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            HelloApplication.primaryStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void onExitSystemButtonClick(MouseEvent mouseEvent) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
