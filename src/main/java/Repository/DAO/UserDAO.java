@@ -77,7 +77,7 @@ public class UserDAO implements Repository<User, Long> {
                 User user = new User();
                 user.setName(result.getString("Name"));
                 user.setPassword(result.getString("Password"));
-                user.setPassword(result.getString("PhoneNumber"));
+                user.setPhoneNumber(result.getString("PhoneNumber"));
                 user.setEmail(result.getString("Email"));
                 user.setCredit(result.getDouble("Credit"));
                 user.setNationalCode(result.getString("NationalCode"));
@@ -87,7 +87,6 @@ public class UserDAO implements Repository<User, Long> {
                 user.setAccountNumber(result.getString("AccountNumber"));
                 user.setLastName(result.getString("LastName"));
                 user.setSignUpDate(result.getDate("SignUpDate"));
-                user.setPhoneNumber(result.getString("PhoneNumber"));
                 user.setId(result.getLong(1));
                 return user;
             }
