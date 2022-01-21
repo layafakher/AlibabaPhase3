@@ -3,15 +3,13 @@ package Repository.DAO;
 import Model.Airport;
 import Model.Transaction;
 import Repository.Repository;
+import javafx.scene.control.ListView;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.List;
+import java.util.*;
 
 import static Repository.DAO.StatementType.*;
 
@@ -32,11 +30,15 @@ public class TransactionDAO implements Repository<Transaction, Long> {
             statements.put(FIND_BY_ID, connection.prepareStatement(
                     "select * from [Alibaba].[dbo].[Transaction] where TransID = ?"
             ));
+            statements.put(FIND_BY_USERID, connection.prepareStatement(
+                    "select * from [Alibaba].[dbo].[Transaction] where UserID = ?"
+            ));
             statements.put(DELETE_BY_ID, connection.prepareStatement(
                     "delete from [Alibaba].[dbo].[Transaction] where TransID = ?"
             ));
             statements.put(INSERT, connection.prepareStatement(
-                    "insert into [Alibaba].[dbo].[Transaction]([TransID],[TransTime],[Amount],[Type],[UserID]) values(?,?,?,?,?)"
+                    "insert into [Alibaba].[dbo].[Transaction]([TransTime],[Amount],[Type],[UserID]) values(?,?,?,?)\n" +
+                            "SELECT SCOPE_IDENTITY()"
             ));
             statements.put(UPDATE, connection.prepareStatement(
                     "update [Alibaba].[dbo].[Transaction] set TransTime = ? , Amount = ? , [Type] = ? , UserID = ? where TransID = ?"
@@ -65,6 +67,21 @@ public class TransactionDAO implements Repository<Transaction, Long> {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    public List<Transaction> findByUserId(Long userId) {
+        PreparedStatement statement = statements.get(FIND_BY_USERID);
+        List<Transaction> transactions = new LinkedList<>();
+        try {
+            statement.setLong(1, userId);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                transactions.add(findById(result.getLong(1)));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return transactions;
     }
 
     @Override
@@ -149,29 +166,33 @@ public class TransactionDAO implements Repository<Transaction, Long> {
 
     @Override
     public Transaction save(Transaction E) {
-        Transaction transaction  = findById(E.getId());
-        if(transaction != null){
-            PreparedStatement statement = statements.get(UPDATE);
-            try {
-                statement.setDate(1,new java.sql.Date(E.getTransTime().getTime()));
-                statement.setDouble(2,E.getAmount());
-                statement.setNString(3,E.getType());
-                statement.setLong(4, E.getUserId());
-                statement.setLong(5, E.getId());
-                statement.execute();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+        if(E.getId() != null){
+            Transaction transaction  = findById(E.getId());
+            if(transaction != null){
+                PreparedStatement statement = statements.get(UPDATE);
+                try {
+                    statement.setDate(1,new java.sql.Date(E.getTransTime().getTime()));
+                    statement.setDouble(2,E.getAmount());
+                    statement.setNString(3,E.getType());
+                    statement.setLong(4, E.getUserId());
+                    statement.setLong(5, E.getId());
+                    statement.execute();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
             }
         }
         else{
             PreparedStatement statement = statements.get(INSERT);
             try {
-                statement.setLong(1, E.getId());
-                statement.setDate(2,new java.sql.Date(E.getTransTime().getTime()));
-                statement.setDouble(3,E.getAmount());
-                statement.setNString(4,E.getType());
-                statement.setLong(5, E.getUserId());
-                statement.execute();
+                statement.setDate(1,new java.sql.Date(E.getTransTime().getTime()));
+                statement.setDouble(2,E.getAmount());
+                statement.setNString(3,E.getType());
+                statement.setLong(4, E.getUserId());
+                ResultSet result = statement.executeQuery();
+                if(result.next()){
+                    return findById(result.getLong(1));
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
