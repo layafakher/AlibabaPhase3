@@ -89,6 +89,7 @@ public class TransactionController {
         }
         observableList = FXCollections.observableList(transactionViews);
         transactionTable.setItems(observableList);
+        transactionTable.getColumns().clear();
         transactionTable.getColumns().addAll(transTimeCol, amountCol, typeCol);
     }
 
