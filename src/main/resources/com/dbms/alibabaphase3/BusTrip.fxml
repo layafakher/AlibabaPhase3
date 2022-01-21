@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.BusTripController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="167.8" minHeight="10.0" prefHeight="167.8" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="177.4" minHeight="10.0" prefHeight="89.80000000000001" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="169.40000000000003" minHeight="10.0" prefHeight="142.39999999999998" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="149.0" text="مبدا (شهر، پایانه)" textAlignment="RIGHT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <font>
+                <Font name="B Nazanin" size="18.0" />
+            </font></Label>
+        <Label alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="144.0" text="مقصد (شهر، پایانه)" textAlignment="RIGHT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <font>
+                <Font name="B Nazanin" size="18.0" />
+            </font>
+        </Label>
+        <ChoiceBox fx:id="desti" nodeOrientation="LEFT_TO_RIGHT" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+        <ChoiceBox fx:id="origin" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+
+        <Label alignment="CENTER_RIGHT" prefHeight="37.0" prefWidth="164.0" text="  تاریخ حرکت" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+            <font>
+                <Font name="B Nazanin" size="18.0" />
+            </font>
+        </Label>
+        <DatePicker GridPane.halignment="CENTER" />
+        <Button mnemonicParsing="false" onMouseClicked="#clickI" text="جستجو" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onMouseClicked="#clickReturnI" text="بازگشت به منوی قبل" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+    </children>
+</GridPane>

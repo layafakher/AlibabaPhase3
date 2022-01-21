@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.ForeignFlightsTicketsController">
-   <children>
-      <ListView prefHeight="286.0" prefWidth="600.0" />
-   </children>
-</VBox>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.ForeignFlightsTicketsController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="166.4" minHeight="10.0" prefHeight="78.4" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="188.4" minHeight="10.0" prefHeight="145.80000000000004" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="124.39999999999998" minHeight="10.0" prefHeight="124.39999999999998" vgrow="SOMETIMES" />
+  </rowConstraints>
+</GridPane>

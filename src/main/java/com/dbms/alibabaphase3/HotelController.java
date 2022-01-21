@@ -6,11 +6,8 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class BusTripController {
-
-
+public class HotelController {
     public void clickI(MouseEvent mouseEvent) {
-
     }
 
     public void clickReturnI(MouseEvent mouseEvent) {

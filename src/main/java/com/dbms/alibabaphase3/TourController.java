@@ -6,9 +6,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class BusTripController {
-
-
+public class TourController {
     public void clickI(MouseEvent mouseEvent) {
 
     }
