@@ -12,8 +12,8 @@
     </columnConstraints>
     <rowConstraints>
         <RowConstraints maxHeight="128.4" minHeight="0.0" prefHeight="75.6" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="316.2000007152557" minHeight="10.0" prefHeight="266.2" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="117.19999999999999" minHeight="10.0" prefHeight="28.19999999999999" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="316.2000007152557" minHeight="10.0" prefHeight="186.20001831054685" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="117.19999999999999" minHeight="10.0" prefHeight="83.79998168945315" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="117.19999999999999" minHeight="10.0" prefHeight="62.60000000000002" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
@@ -23,16 +23,13 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" prefWidth="67.19999999999999" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="135.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="204.0" minWidth="10.0" prefWidth="78.39999999999998" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.39999999999998" minWidth="10.0" prefWidth="114.00003051757812" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="39.5999694824219" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.39999999999998" minWidth="10.0" prefWidth="109.79996337890623" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.0" minWidth="10.0" prefWidth="46.60003662109375" />
             </columnConstraints>
             <rowConstraints>
             <RowConstraints maxHeight="92.4" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="92.4" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="92.4" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="92.4" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="123.4" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="100.4000152587891" minHeight="10.0" prefHeight="98.00000000000003" vgrow="SOMETIMES" />
             </rowConstraints>
          <children>
             <Label text="نام : " GridPane.columnIndex="5" GridPane.halignment="CENTER">
@@ -53,6 +50,60 @@
                </font>
             </Label>
             <TextField fx:id="passwordInput" layoutX="212.0" layoutY="17.0" />
+            <TextField fx:id="telephoneInput" layoutX="10.0" layoutY="17.0" GridPane.rowIndex="1" />
+            <TextField fx:id="phoneInput" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label text="جنسیت : " GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <Label text="تلفن همراه : " GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="360.0" layoutY="61.0" text="تلفن ثابت : " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="539.0" layoutY="61.0" text="کد ملی : " GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nationalCodeInput" layoutX="427.0" layoutY="58.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label layoutX="360.0" layoutY="61.0" text="ایمیل : " GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailInput" layoutX="213.0" layoutY="58.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label layoutX="154.0" layoutY="61.0" text="تاریخ تولد : " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dateOfBirthInput" GridPane.rowIndex="2" />
+            <GridPane GridPane.columnIndex="4" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="57.0" />
+                  <ColumnConstraints maxWidth="58.20002670288086" minWidth="0.0" prefWidth="53.400000000000006" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <RadioButton fx:id="maleRadioButton" mnemonicParsing="false" text="مرد" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                      <ToggleGroup fx:id="genderGroup"/>
+                  </RadioButton>
+                  <RadioButton fx:id="femaleRadioButton" layoutX="68.0" layoutY="32.0" mnemonicParsing="false" text="زن" GridPane.halignment="CENTER" >
+                      <toggleGroup>
+                          <fx:reference source="genderGroup"/>
+                      </toggleGroup>
+               </RadioButton>
+               </children>
+            </GridPane>
          </children>
         </GridPane>
         <GridPane GridPane.columnIndex="1">
@@ -105,6 +156,37 @@
                </font>
             </Button>
             <Button mnemonicParsing="false" onMouseClicked="#onSaveChangesButtonClick" text="ذخیره تغییرات" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <font>
+                  <Font name="B Nazanin" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <GridPane GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="139.40001678466797" minWidth="10.0" prefWidth="137.59996795654297" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.0" minWidth="10.0" prefWidth="155.20003204345704" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.1999633789062" minWidth="10.0" prefWidth="56.80000000000001" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="203.1999633789062" minWidth="10.0" prefWidth="143.19996337890626" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.199951171875" minWidth="10.0" prefWidth="80.80003662109374" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="شماره حساب : " GridPane.columnIndex="4" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="accountNumberInput" GridPane.columnIndex="3" />
+            <Label layoutX="510.0" layoutY="42.0" text="اعتبار : " GridPane.columnIndex="2" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="B Nazanin" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="creditInput" editable="false" layoutX="337.0" layoutY="39.0" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onMouseClicked="#onSaveChangesButtonClick" text="افزایش اعتبار" GridPane.halignment="CENTER">
                <font>
                   <Font name="B Nazanin" size="15.0" />
                </font>
