@@ -13,6 +13,7 @@ public class HelloApplication extends Application {
 
     protected static Stage primaryStage;
 
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
