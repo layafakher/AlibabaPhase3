@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.ForeignFlightsTicketsController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.ForeignFlightsTicketsController">
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="729.6" minWidth="10.0" prefWidth="711.6000305175781" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="166.4" minHeight="10.0" prefHeight="78.4" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="188.4" minHeight="10.0" prefHeight="145.80000000000004" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="124.39999999999998" minHeight="10.0" prefHeight="124.39999999999998" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="431.2" minHeight="10.0" prefHeight="346.8" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="431.2" minHeight="10.0" prefHeight="52.80000000000001" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="124.39999999999998" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
   </rowConstraints>
+   <children>
+      <TableView prefHeight="339.0" prefWidth="600.0" GridPane.halignment="CENTER">
+        <columns>
+            <TableColumn prefWidth="72.60000765323639" text="انتخاب" />
+            <TableColumn prefWidth="44.19999694824219" text="ظرفیت " />
+            <TableColumn prefWidth="57.800018310546875" text="قیمت" />
+            <TableColumn prefWidth="72.20001220703125" text="تاریخ برگشت" />
+            <TableColumn prefWidth="68.79997253417969" text="مقصد" />
+            <TableColumn prefWidth="104.4000244140625" text="تاریخ رفت" />
+            <TableColumn minWidth="3.79998779296875" prefWidth="55.39996337890625" text="مبدا" />
+            <TableColumn prefWidth="120.79998779296875" text="شرکت هواپیمایی" />
+        </columns>
+      </TableView>
+       <Button mnemonicParsing="false" onMouseClicked="#back" prefHeight="26.0" prefWidth="181.0" text="بازگشت به منوی قبل" GridPane.rowIndex="1" />
+   </children>
 </GridPane>

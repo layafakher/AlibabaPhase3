@@ -22,7 +22,7 @@
                 <Font name="B Nazanin" size="18.0" />
             </font></Label>
 
-        <ChoiceBox fx:id="origin" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+        <ChoiceBox fx:id="name" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
         <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="55.0" prefWidth="138.0" text="مسافران" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
             <font>
                 <Font name="B Nazanin" size="18.0" />

@@ -6,12 +6,10 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class ForeignFlightsTicketsController {
-
-
+public class BusTicketController {
     public void back(MouseEvent mouseEvent) {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ForeignFlight.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BusTrip.fxml"));
         try {
             Scene scene = new Scene(fxmlLoader.load(), 600, 400);
             HelloApplication.primaryStage.setScene(scene);
