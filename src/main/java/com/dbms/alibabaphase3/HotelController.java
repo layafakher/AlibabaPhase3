@@ -81,8 +81,8 @@ public class HotelController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HotelReserve.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(), 683, 400);
-                HotelReserveController controller = fxmlLoader.getController();
-                controller.setTable();
+//                HotelReserveController controller = fxmlLoader.getController();
+//                controller.setTable();
                 HelloApplication.primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();
