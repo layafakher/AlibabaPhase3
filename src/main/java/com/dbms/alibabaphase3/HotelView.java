@@ -1,11 +1,17 @@
 package com.dbms.alibabaphase3;
 
+import Model.HotelReserve;
+import Repository.DAO.HotelReserveDAO;
+import Repository.DAO.RepositoryFacade;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 
 public class HotelView {
     private String city;
     private Long id;
+    private double priceDouble;
     private SimpleStringProperty name;
     private SimpleStringProperty residenceType;
     private SimpleStringProperty rating;
@@ -27,6 +33,34 @@ public class HotelView {
         this.hotelCity = new SimpleStringProperty(hotelCity);
         this.price = new SimpleStringProperty(price);
         this.reserve = new Button("رزرو هتل");
+        reserve.setOnMouseClicked((mouseEvent -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to reserve this hotel?", ButtonType.YES,ButtonType.NO);
+            alert.showAndWait().ifPresent(response -> {
+                if(response == ButtonType.YES){
+                    HotelReserve hotelReserve = new HotelReserve();
+                    hotelReserve.setUserId(Info.getInstance().getUser().getId().intValue());
+                    hotelReserve.setNumberOfRooms(HotelReserveController.roomCount);
+                    hotelReserve.setPassengerCount(HotelReserveController.passengerCount);
+                    hotelReserve.setCheckinDate(java.sql.Date.valueOf(HotelReserveController.entryDate));
+                    hotelReserve.setCheckoutDate(java.sql.Date.valueOf(HotelReserveController.exitDate));
+                    hotelReserve.setPrice(priceDouble);
+                    hotelReserve.setHotelId(id.intValue());
+
+                    HotelReserveDAO hotelReserveDAO = (HotelReserveDAO) RepositoryFacade.getInstance().getDao(HotelReserve.class);
+                    hotelReserveDAO.save(hotelReserve);
+                    Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "Hotel reserved Successfully", ButtonType.OK);
+                    alert2.show();
+                }
+            });
+        } ));
+    }
+
+    public double getPriceDouble() {
+        return priceDouble;
+    }
+
+    public void setPriceDouble(double priceDouble) {
+        this.priceDouble = priceDouble;
     }
 
     public String getCity() {

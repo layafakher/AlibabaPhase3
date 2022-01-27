@@ -2,6 +2,7 @@ package Repository.DAO;
 
 import Model.Hotel;
 import Model.HotelReserve;
+import Model.Transaction;
 import Repository.Repository;
 
 import java.sql.Connection;
@@ -36,8 +37,8 @@ public class HotelReserveDAO implements Repository<HotelReserve, Long> {
                     "delete from [Alibaba].[dbo].[HotelReserve] where ReserveID = ?"
             ));
             statements.put(INSERT, connection.prepareStatement(
-                    "insert into [Alibaba].[dbo].[HotelReserve]([ReserveID],[CheckInDate],[CheckOutDate],[Price],[PassengerCount],[NumberOfRooms]," +
-                            "[UserID],[HotelID]) values(?,?,?,?,?,?,?,?)"
+                    "insert into [Alibaba].[dbo].[HotelReserve]([CheckInDate],[CheckOutDate],[Price],[PassengerCount],[NumberOfRooms]," +
+                            "[UserID],[HotelID]) values(?,?,?,?,?,?,?)\n SELECT SCOPE_IDENTITY()"
             ));
             statements.put(UPDATE, connection.prepareStatement(
                     "update [Alibaba].[dbo].[HotelReserve] set CheckInDate = ? , CheckOutDate = ? , Price = ? , PassengerCount = ? ," +
@@ -160,9 +161,27 @@ public class HotelReserveDAO implements Repository<HotelReserve, Long> {
 
     @Override
     public HotelReserve save(HotelReserve E) {
-        HotelReserve hotelReserve  = findById(E.getId());
-        if(hotelReserve != null){
-            PreparedStatement statement = statements.get(UPDATE);
+        if(E.getId() != null){
+            HotelReserve hotelReserve  = findById(E.getId());
+            if(hotelReserve != null){
+                PreparedStatement statement = statements.get(UPDATE);
+                try {
+                    statement.setDate(1,new java.sql.Date(E.getCheckinDate().getTime()));
+                    statement.setDate(2,new java.sql.Date(E.getCheckoutDate().getTime()));
+                    statement.setDouble(3,E.getPrice());
+                    statement.setInt(4,E.getPassengerCount());
+                    statement.setInt(5,E.getNumberOfRooms());
+                    statement.setLong(6,E.getUserId());
+                    statement.setLong(7,E.getHotelId());
+                    statement.setLong(8, E.getId());
+                    statement.execute();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        else{
+            PreparedStatement statement = statements.get(INSERT);
             try {
                 statement.setDate(1,new java.sql.Date(E.getCheckinDate().getTime()));
                 statement.setDate(2,new java.sql.Date(E.getCheckoutDate().getTime()));
@@ -171,24 +190,10 @@ public class HotelReserveDAO implements Repository<HotelReserve, Long> {
                 statement.setInt(5,E.getNumberOfRooms());
                 statement.setLong(6,E.getUserId());
                 statement.setLong(7,E.getHotelId());
-                statement.setLong(8, E.getId());
-                statement.execute();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        else{
-            PreparedStatement statement = statements.get(INSERT);
-            try {
-                statement.setLong(1, E.getId());
-                statement.setDate(2,new java.sql.Date(E.getCheckinDate().getTime()));
-                statement.setDate(3,new java.sql.Date(E.getCheckoutDate().getTime()));
-                statement.setDouble(4,E.getPrice());
-                statement.setInt(5,E.getPassengerCount());
-                statement.setInt(6,E.getNumberOfRooms());
-                statement.setLong(7,E.getUserId());
-                statement.setLong(8,E.getHotelId());
-                statement.execute();
+                ResultSet result = statement.executeQuery();
+                if(result.next()){
+                    return findById(result.getLong(1));
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

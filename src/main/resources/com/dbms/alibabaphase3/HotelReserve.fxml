@@ -18,7 +18,7 @@
                 <TableColumn fx:id="reserve" prefWidth="102.80001986026764" text="رزرو تور" />
                 <TableColumn fx:id="price" prefWidth="75.20001983642578" text="قیمت" />
                 <TableColumn fx:id="city" prefWidth="83.0" text="شهر" />
-                <TableColumn fx:id="location" prefWidth="193.00003051757812" text="محل روی نقشه" />
+                <TableColumn fx:id="location1" prefWidth="193.00003051757812" text="محل روی نقشه" />
                 <TableColumn fx:id="starCount" prefWidth="84.59994506835938" text="تعداد ستاره" />
                 <TableColumn fx:id="residenceType" minWidth="3.79998779296875" prefWidth="74.20001220703125" text="نوع اقامت" />
                 <TableColumn fx:id="hotelName" prefWidth="68.199951171875" text="هتل" />

@@ -82,7 +82,8 @@ public class HotelController implements Initializable {
             try {
                 Scene scene = new Scene(fxmlLoader.load(), 683, 400);
                 HotelReserveController controller = fxmlLoader.getController();
-                controller.setTable();
+                controller.setInitial(hotelCity.getValue(),Integer.parseInt(passengerCount.getText()),
+                        Integer.parseInt(roomCount.getText()),entryDate.getValue(),exitDate.getValue());
                 HelloApplication.primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();
