@@ -33,7 +33,7 @@
                 <Font name="B Nazanin" size="18.0" />
             </font>
         </Label>
-        <DatePicker GridPane.halignment="CENTER" />
+        <DatePicker fx:id="exdate" GridPane.halignment="CENTER" />
         <Button mnemonicParsing="false" onMouseClicked="#clickI" text="جستجو" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
         <Button mnemonicParsing="false" onMouseClicked="#clickReturnI" text="بازگشت به منوی قبل" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
     </children>
