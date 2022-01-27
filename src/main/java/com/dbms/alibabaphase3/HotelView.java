@@ -48,7 +48,7 @@ public class HotelView {
 
                     HotelReserveDAO hotelReserveDAO = (HotelReserveDAO) RepositoryFacade.getInstance().getDao(HotelReserve.class);
                     hotelReserveDAO.save(hotelReserve);
-                    Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "Hotel reserved Successfully", ButtonType.OK);
+                    Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION, "Hotel reserved successfully", ButtonType.OK);
                     alert2.show();
                 }
             });

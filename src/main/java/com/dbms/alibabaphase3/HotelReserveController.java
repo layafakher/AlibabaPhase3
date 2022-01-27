@@ -67,7 +67,7 @@ public class HotelReserveController {
         List<Hotel> userHotels = ((HotelDAO) RepositoryFacade.getInstance().getDao(Hotel.class)).findByData(cityName);
         List<HotelView> hotelViews = new LinkedList<>();
         for (Hotel hotel : userHotels) {
-            double price = hotel.getMinPrice() + hotel.getMaxPrice() * passengerCount / 2;
+            double price = (hotel.getMinPrice() + hotel.getMaxPrice()) * passengerCount / 2;
             HotelView hotelView = new HotelView(
                     hotel.getName(),hotel.getResidenceType(),String.valueOf(hotel.getRating()),hotel.getLocation(),hotel.getCity(),String.valueOf(price)
             );
