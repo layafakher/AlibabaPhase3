@@ -60,7 +60,7 @@ public class FlightDAO implements Repository<Flight, Long> {
                 Flight flight = new Flight();
                 flight.setArrivalTime(result.getDate("ArrivalTime"));
                 flight.setTicketType(result.getString("TicketType"));
-                flight.setOneWay(result.getBoolean("IsVip"));
+                flight.setOneWay(result.getBoolean("IsOneWay"));
                 flight.setReturnFlightId(result.getLong("ReturnFlightID"));
                 flight.setId(result.getLong(1));
                 if(trip != null){

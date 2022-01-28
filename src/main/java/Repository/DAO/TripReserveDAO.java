@@ -1,5 +1,6 @@
 package Repository.DAO;
 
+import Model.HotelReserve;
 import Model.Transaction;
 import Model.TripReserve;
 import Repository.Repository;
@@ -36,7 +37,7 @@ public class TripReserveDAO implements Repository<TripReserve, Long> {
                     "delete from [Alibaba].[dbo].[TripReserve] where ReserveID = ?"
             ));
             statements.put(INSERT, connection.prepareStatement(
-                    "insert into [Alibaba].[dbo].[TripReserve]([ReserveID],[ReserveNumber],[PassengerCount],[UserID],[TripID],[Price],[SeatNumber]) values(?,?,?,?,?,?,?)"
+                    "insert into [Alibaba].[dbo].[TripReserve]([ReserveNumber],[PassengerCount],[UserID],[TripID],[Price],[SeatNumber]) values(?,?,?,?,?,?) SELECT SCOPE_IDENTITY()"
             ));
             statements.put(UPDATE, connection.prepareStatement(
                     "update [Alibaba].[dbo].[TripReserve] set ReserveNumber = ? , PassengerCount = ? , UserID = ? , TripID = ? , Price = ? , SeatNumber = ? where ReserveID = ?"
@@ -155,9 +156,26 @@ public class TripReserveDAO implements Repository<TripReserve, Long> {
 
     @Override
     public TripReserve save(TripReserve E) {
-        TripReserve tripReserve  = findById(E.getId());
-        if(tripReserve != null){
-            PreparedStatement statement = statements.get(UPDATE);
+        if(E.getId() != null){
+            TripReserve tripReserve  = findById(E.getId());
+            if(tripReserve != null){
+                PreparedStatement statement = statements.get(UPDATE);
+                try {
+                    statement.setString(1,E.getReserveNumber());
+                    statement.setInt(2,E.getPassengerCont());
+                    statement.setLong(3,E.getUserId());
+                    statement.setLong(4, E.getTripId());
+                    statement.setDouble(5, E.getPrice());
+                    statement.setInt(6, E.getSeatNumber());
+                    statement.setLong(7, E.getId());
+                    statement.execute();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        else{
+            PreparedStatement statement = statements.get(INSERT);
             try {
                 statement.setString(1,E.getReserveNumber());
                 statement.setInt(2,E.getPassengerCont());
@@ -165,23 +183,10 @@ public class TripReserveDAO implements Repository<TripReserve, Long> {
                 statement.setLong(4, E.getTripId());
                 statement.setDouble(5, E.getPrice());
                 statement.setInt(6, E.getSeatNumber());
-                statement.setLong(7, E.getId());
-                statement.execute();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        else{
-            PreparedStatement statement = statements.get(INSERT);
-            try {
-                statement.setLong(1, E.getId());
-                statement.setString(2,E.getReserveNumber());
-                statement.setInt(3,E.getPassengerCont());
-                statement.setLong(4,E.getUserId());
-                statement.setLong(5, E.getTripId());
-                statement.setDouble(6, E.getPrice());
-                statement.setInt(7, E.getSeatNumber());
-                statement.execute();
+                ResultSet result = statement.executeQuery();
+                if(result.next()){
+                    return findById(result.getLong(1));
+                }
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }

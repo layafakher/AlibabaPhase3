@@ -2,16 +2,14 @@ package Repository.DAO;
 
 import Model.Flight;
 import Model.ForeignFlight;
+import Model.Hotel;
 import Repository.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.List;
+import java.util.*;
 
 import static Repository.DAO.StatementType.*;
 
@@ -34,6 +32,9 @@ public class ForeignFlightDAO implements Repository<ForeignFlight, Long> {
             ));
             statements.put(FIND_BY_ID, connection.prepareStatement(
                     "select * from [Alibaba].[dbo].[ForeignFlight] where ForeignFlightID = ?"
+            ));
+            statements.put(FIND_BY_DATA, connection.prepareStatement(
+                    "select * from [Alibaba].[dbo].[ForeignFlight] INNER JOIN [Alibaba].[dbo].[Flight] ON [Alibaba].[dbo].[ForeignFlight].[ForeignFlightID]=[Alibaba].[dbo].[Flight].[FlightID] INNER JOIN [Alibaba].[dbo].[Trip] ON [Alibaba].[dbo].[Trip].[TripID] = [Alibaba].[dbo].[Flight].[FlightID] where Origin = ? AND Destination = ? AND IsOneWay = ? AND TicketType = ? "
             ));
             statements.put(DELETE_BY_ID, connection.prepareStatement(
                     "delete from [Alibaba].[dbo].[ForeignFlight] where ForeignFlightID = ?"
@@ -78,6 +79,25 @@ public class ForeignFlightDAO implements Repository<ForeignFlight, Long> {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    public List<ForeignFlight> findByData(String origin,String destination,boolean type,String economy){
+        PreparedStatement statement = statements.get(FIND_BY_DATA);
+        List<ForeignFlight> foreignFlights = new LinkedList<>();
+        try {
+            statement.setNString(1, origin);
+            statement.setNString(2, destination);
+            statement.setNString(3, String.valueOf(type));
+            statement.setNString(4, economy);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                foreignFlights.add(findById(result.getLong(1)));
+            }
+        }
+        catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return foreignFlights;
     }
 
     @Override

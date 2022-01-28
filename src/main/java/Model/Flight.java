@@ -50,4 +50,48 @@ public class Flight<T extends Flight<T>> extends Trip<T> {
     public void setReturnFlightId(Long returnFlightId) {
         this.returnFlightId = returnFlightId;
     }
+
+    public Flight(String origin, String destination, Date departureTime, int capacity) {
+        super(origin, destination, departureTime, capacity);
+    }
+
+    @Override
+    public String getOrigin() {
+        return super.getOrigin();
+    }
+
+    @Override
+    public void setOrigin(String origin) {
+        super.setOrigin(origin);
+    }
+
+    @Override
+    public String getDestination() {
+        return super.getDestination();
+    }
+
+    @Override
+    public void setDestination(String destination) {
+        super.setDestination(destination);
+    }
+
+    @Override
+    public Date getDepartureTime() {
+        return super.getDepartureTime();
+    }
+
+    @Override
+    public void setDepartureTime(Date departureTime) {
+        super.setDepartureTime(departureTime);
+    }
+
+    @Override
+    public int getCapacity() {
+        return super.getCapacity();
+    }
+
+    @Override
+    public void setCapacity(int capacity) {
+        super.setCapacity(capacity);
+    }
 }

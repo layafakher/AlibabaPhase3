@@ -38,12 +38,13 @@ public class ForeignFlightController implements Initializable {
     private DatePicker retdate;
     @FXML
     private TextField cnt;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Airport> airports = RepositoryFacade.getInstance().findAll(Airport.class);
         List<AirportView> airportViews = new LinkedList<>();
         for (Airport airport:airports) {
-            AirportView airportView = new AirportView(airport.getName() + " ("+ airport.getCountry()+")", airport.getId());
+            AirportView airportView = new AirportView(airport.getName() + " ("+ airport.getCity()+")",airport.getCity(),airport.getCountry(), airport.getId());
             airportViews.add(airportView);
         }
         ObservableList<AirportView> observableList = FXCollections.observableList(airportViews);
@@ -96,6 +97,8 @@ public class ForeignFlightController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ForeignFlightsTickets.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(), 683, 400);
+                ForeignFlightsTicketsController controller = fxmlLoader.getController();
+                controller.setInitial(raft.getValue(),eco.getValue(),origin.getValue(),desti.getValue(),Integer.parseInt(cnt.getText()), retdate.getValue(),exdate.getValue());
                 HelloApplication.primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();

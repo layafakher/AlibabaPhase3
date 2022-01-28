@@ -13,16 +13,16 @@
     <RowConstraints maxHeight="124.39999999999998" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <TableView prefHeight="339.0" prefWidth="600.0" GridPane.halignment="CENTER">
+      <TableView fx:id="foreignFlights" prefHeight="285.0" prefWidth="507.0" GridPane.halignment="CENTER">
         <columns>
-            <TableColumn prefWidth="72.60000765323639" text="انتخاب" />
-            <TableColumn prefWidth="44.19999694824219" text="ظرفیت " />
-            <TableColumn prefWidth="57.800018310546875" text="قیمت" />
-            <TableColumn prefWidth="72.20001220703125" text="تاریخ برگشت" />
-            <TableColumn prefWidth="68.79997253417969" text="مقصد" />
-            <TableColumn prefWidth="104.4000244140625" text="تاریخ رفت" />
-            <TableColumn minWidth="3.79998779296875" prefWidth="55.39996337890625" text="مبدا" />
-            <TableColumn prefWidth="120.79998779296875" text="شرکت هواپیمایی" />
+            <TableColumn fx:id="reserve" prefWidth="84.79999083280563" text="انتخاب" />
+            <TableColumn fx:id="capacity" prefWidth="62.4000244140625" text="ظرفیت " />
+            <TableColumn fx:id="price" prefWidth="69.39999389648438" text="قیمت" />
+            <TableColumn fx:id="retdate" prefWidth="71.19999694824219" text="تاریخ برگشت" />
+            <TableColumn fx:id="destination" prefWidth="72.4000244140625" text="مقصد" />
+            <TableColumn fx:id="exdate" prefWidth="85.4000244140625" text="تاریخ رفت" />
+            <TableColumn fx:id="origin" minWidth="3.79998779296875" prefWidth="64.4000244140625" text="مبدا" />
+            <TableColumn fx:id="air" minWidth="0.0" prefWidth="93.199951171875" text="شرکت هواپیمایی" />
         </columns>
       </TableView>
        <Button mnemonicParsing="false" onMouseClicked="#back" prefHeight="26.0" prefWidth="181.0" text="بازگشت به منوی قبل" GridPane.rowIndex="1" />

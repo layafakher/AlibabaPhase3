@@ -41,7 +41,7 @@ public class InlandFlightController implements Initializable {
         List<AirportView> airportViews = new LinkedList<>();
         for (Airport airport:airports) {
             if (airport.getCountry().equals("Iran")){
-                AirportView airportView = new AirportView(airport.getName() + " ("+ airport.getCity()+")", airport.getId());
+                AirportView airportView = new AirportView(airport.getName() + " ("+ airport.getCity()+")",airport.getCity(),airport.getCountry(), airport.getId());
                 airportViews.add(airportView);
             }
         }
