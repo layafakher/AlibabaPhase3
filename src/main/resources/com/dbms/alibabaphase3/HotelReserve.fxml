@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.HotelReserveController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dbms.alibabaphase3.HotelReserveController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="729.6" minWidth="10.0" prefWidth="711.6000305175781" />
     </columnConstraints>
@@ -15,7 +15,7 @@
     <children>
         <TableView fx:id="hotels" prefHeight="366.0" prefWidth="700.0" GridPane.halignment="CENTER">
             <columns>
-                <TableColumn fx:id="reserve" prefWidth="102.80001986026764" text="رزرو تور" />
+                <TableColumn fx:id="reserve" prefWidth="102.80001986026764" text="رزرو هتل" />
                 <TableColumn fx:id="price" prefWidth="75.20001983642578" text="قیمت" />
                 <TableColumn fx:id="city" prefWidth="83.0" text="شهر" />
                 <TableColumn fx:id="location1" prefWidth="193.00003051757812" text="محل روی نقشه" />

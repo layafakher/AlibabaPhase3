@@ -1,6 +1,7 @@
 package Repository.DAO;
 
 import Model.BusTrip;
+import Model.ForeignFlight;
 import Model.Trip;
 import Repository.Repository;
 
@@ -8,10 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.List;
+import java.util.*;
 
 import static Repository.DAO.StatementType.*;
 
@@ -37,6 +35,9 @@ public class BusTripDAO implements Repository<BusTrip, Long> {
             ));
             statements.put(DELETE_BY_ID, connection.prepareStatement(
                     "delete from [Alibaba].[dbo].[BusTrip] where BusTripID = ?"
+            ));
+            statements.put(FIND_BY_DATA, connection.prepareStatement(
+                    "select * from [Alibaba].[dbo].[BusTrip] INNER JOIN [Alibaba].[dbo].[Trip] ON [Alibaba].[dbo].[Trip].[TripID] = [Alibaba].[dbo].[BusTrip].[BusTripID] where Origin = ? AND Destination = ? "
             ));
             statements.put(INSERT, connection.prepareStatement(
                     "insert into [Alibaba].[dbo].[BusTrip]([BusTripID],[FinalStop],[OriginTerminal],[IsNonStop],[BusCompanyID],[IsVip]) values(?,?,?,?,?,?)"
@@ -111,6 +112,24 @@ public class BusTripDAO implements Repository<BusTrip, Long> {
             throwables.printStackTrace();
         }
         return busTrips;
+    }
+
+
+    public List<BusTrip> findByData(String origin, String destination){
+        PreparedStatement statement = statements.get(FIND_BY_DATA);
+        List<BusTrip> foreignFlights = new LinkedList<>();
+        try {
+            statement.setNString(1, origin);
+            statement.setNString(2, destination);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                foreignFlights.add(findById(result.getLong(1)));
+            }
+        }
+        catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return foreignFlights;
     }
 
     @Override

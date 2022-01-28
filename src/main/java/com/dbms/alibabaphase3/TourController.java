@@ -60,6 +60,9 @@ public class TourController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("TourTicket.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(), 683, 400);
+                TourTicketController controller = fxmlLoader.getController();
+                controller.setInitial(desti.getValue(),Integer.parseInt(cnt.getText()),
+                        Integer.parseInt(room.getText()),retdate.getValue(),exdate.getValue());
                 HelloApplication.primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();

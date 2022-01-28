@@ -76,6 +76,8 @@ public class BusTripController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BusTicket.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(), 683, 400);
+                BusTicketController controller = fxmlLoader.getController();
+                controller.setInitial(origin.getValue(),desti.getValue(),exdate.getValue());
                 HelloApplication.primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();
