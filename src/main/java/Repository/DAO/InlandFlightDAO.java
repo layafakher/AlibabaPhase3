@@ -1,6 +1,5 @@
 package Repository.DAO;
 
-import Model.Airport;
 import Model.Flight;
 import Model.InlandFlight;
 import Repository.Repository;
@@ -9,10 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.EnumMap;
-import java.util.List;
+import java.util.*;
 
 import static Repository.DAO.StatementType.*;
 
@@ -35,6 +31,9 @@ public class InlandFlightDAO implements Repository<InlandFlight, Long> {
             ));
             statements.put(FIND_BY_ID, connection.prepareStatement(
                     "select * from [Alibaba].[dbo].[InlandFlight] where InlandFlightID = ?"
+            ));
+            statements.put(FIND_BY_DATA, connection.prepareStatement(
+                    "select * from [Alibaba].[dbo].[InlandFlight] INNER JOIN [Alibaba].[dbo].[Flight] ON [Alibaba].[dbo].[InlandFlight].[InlandFlightID]=[Alibaba].[dbo].[Flight].[FlightID] INNER JOIN [Alibaba].[dbo].[Trip] ON [Alibaba].[dbo].[Trip].[TripID] = [Alibaba].[dbo].[Flight].[FlightID] where Origin = ? AND Destination = ? AND IsOneWay = ? "
             ));
             statements.put(DELETE_BY_ID, connection.prepareStatement(
                     "delete from [Alibaba].[dbo].[InlandFlight] where InlandFlightID = ?"
@@ -74,6 +73,24 @@ public class InlandFlightDAO implements Repository<InlandFlight, Long> {
             throwables.printStackTrace();
         }
         return null;
+    }
+
+    public List<InlandFlight> findByData(String origin, String destination, boolean type){
+        PreparedStatement statement = statements.get(FIND_BY_DATA);
+        List<InlandFlight> inlandFlights = new LinkedList<>();
+        try {
+            statement.setNString(1, origin);
+            statement.setNString(2, destination);
+            statement.setNString(3, String.valueOf(type));
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                inlandFlights.add(findById(result.getLong(1)));
+            }
+        }
+        catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return inlandFlights;
     }
 
     @Override

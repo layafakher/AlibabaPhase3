@@ -36,6 +36,7 @@ public class InlandFlightController implements Initializable {
     @FXML
     private TextField cnt;
 
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Airport> airports = RepositoryFacade.getInstance().findAll(Airport.class);
         List<AirportView> airportViews = new LinkedList<>();
@@ -100,6 +101,9 @@ public class InlandFlightController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("InlandFlightTicket.fxml"));
             try {
                 Scene scene = new Scene(fxmlLoader.load(), 683, 400);
+                InlandFlightTicketController controller = fxmlLoader.getController();
+                controller.setInitial(raft.getValue(),origin.getValue(),desti.getValue(),Integer.parseInt(cnt.getText()), retdate.getValue(),exdate.getValue());
+
                 HelloApplication.primaryStage.setScene(scene);
             } catch (IOException e) {
                 e.printStackTrace();
